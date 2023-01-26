@@ -1,17 +1,11 @@
 import Home from "./routes/home/home.component";
-import {Routes, Route, Outlet} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom';
+import Navigation from "./routes/navigation/navigation.component";
 
-const Navigation=()=>{
-  return(
-    <div>
-      <div><h2>Navigation Bar</h2></div>
-      <Outlet/>
-    </div>
-  )
-}
+
 
 const App=()=>{
-  const Credits=()=>{
+  const Shop=()=>{
     return(
       <h1>shop</h1>
     )
@@ -20,7 +14,7 @@ const App=()=>{
     <Routes>
       <Route path="/" element={<Navigation/>}>
           <Route  index element={<Home/>}/>
-          <Route path='Credits' element={<Credits/>}/>
+          <Route path='Shop' element={<Shop/>}/>
       </Route>
       {/*if the path string matches the URL, element passed. */}
      
