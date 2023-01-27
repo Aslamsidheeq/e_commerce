@@ -1,7 +1,7 @@
-import '../../../src/styles.scss'
 import Directory from'../../Components/directory/directory.component'
 
 import { Outlet } from 'react-router-dom';
+import { Fragment } from 'react';
 
 const Home = () => {
     let categories=[
@@ -34,12 +34,10 @@ const Home = () => {
     
     
   return (
-    <div>
+    <Fragment>
       <Outlet/>
       <Directory categories={categories}/>
-      
-    </div>
-   
+      </Fragment>
     
 )};
 
