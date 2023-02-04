@@ -56,4 +56,20 @@ export const db = getFirestore();
   console.log(userSnapshot);
   console.log((await userSnapshot).exists());
   //exists method to check if it exist,boolean
+
+  if(!userSnapshot.exists()){
+    const {displayName, email} = userAuth;
+    const createdAt = new Date();
+
+    try{
+      await setDoc(userDocRef,{
+        displayName,
+        email,
+        createdAt
+      });
+    } catch (error){
+      console.loh('there was an error',error.message);
+    }
+  }
+  return userDocRef;
 }
