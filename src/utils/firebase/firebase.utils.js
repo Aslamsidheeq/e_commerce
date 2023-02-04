@@ -10,6 +10,14 @@ import {
     GoogleAuthProvider
         } from 'firebase/auth'
 
+import{
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+} from 'firebase/firestore'
+
+
 
 //copied from firebase website
 // Your web app's Firebase configuration
@@ -35,3 +43,17 @@ provider.setCustomParameters(
 
 export const auth= getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth,provider)
+
+export const db = getFirestore();
+
+ export const createUserDocumentFromAuth = async (userAuth) =>{
+  //cheching if there is existing data
+  const userDocRef = doc(db,'users',userAuth.uid);
+
+  console.log(userDocRef);
+
+  const userSnapshot = await getDoc(userDocRef);
+  console.log(userSnapshot);
+  console.log((await userSnapshot).exists());
+  //exists method to check if it exist,boolean
+}
