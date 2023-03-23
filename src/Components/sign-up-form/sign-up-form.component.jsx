@@ -1,5 +1,7 @@
 import { useState } from "react";
+import './sign-up-form.styles.scss'
 import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import FormInput from "../form-input/form-input.component";
     const defaultFormFeilds={
         displayName:'',
         email:'',
@@ -39,44 +41,48 @@ const SignUpForm = () => {
                                                     // function is the next step.
     }
 
-    const handleChange = (event)=>{ //8 takes input event
-                const {name, value} = event.target; //10. name and value coming through the event
-                setFormFeilds({...formFeilds, [name]:value}) //11. update apptopriate feilds only
-        }   //5
+    const handleChange = (event)=>{                                     //8 takes input event
+                const {name, value} = event.target;                     //10. name and value coming through the event
+                setFormFeilds({...formFeilds, [name]:value})            //11. update apptopriate feilds only
+        }                                                               //5
     return(
-        <div>
-            {/* 1. creating function */}
-            <h1>Sign up with your email id and password</h1> 
+        <div className="sign-up-container">
+                                                                        {/* 1. creating function */}
+            <h2>Dont have an account ?</h2>
+            <span>Sign up with your email id and password</span> 
 
-            {/* 2. form component */}
+                                                                        {/* 2. form component */}
             <form onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                                                        {/* 9. onChange to recieve inputs  part 1 9:40 ,name will come through event ; name of attribute in fucntion to updatevalue is the value to update in named feild */}
-                <input 
+                
+                                                                        {/* 9. onChange to recieve inputs  part 1 9:40 ,name will come through event ; name of attribute in fucntion to updatevalue is the value to update in named feild */}
+                <FormInput 
+                    label='Display Name'
                     type='text' 
                     required 
                     onChange={handleChange} 
                     name="displayName" 
                     value={displayName}/>
 
-                <label> Email </label>
-                <input 
+                
+                <FormInput
+                    label="email"
                     type='email' 
                     required 
                     onChange={handleChange} 
                     name="email" 
                     value={email}/>
 
-                <label>Password</label>
-                <input 
+                
+                <FormInput 
+                    label="password"
                     type='password' 
                     required 
                     onChange={handleChange} 
                     name="password" 
                     value={password}/>
 
-                <label>Confirm password</label>
-                <input 
+                <FormInput 
+                    label="confirmPassword"
                     type='password'
                     required 
                     onChange={handleChange} 

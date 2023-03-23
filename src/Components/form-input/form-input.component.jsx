@@ -1,13 +1,20 @@
-const FormInput = ()=>{
+import './form-input.styles.scss'
+
+
+const FormInput = ({label,...otherProps})=>{
     return(
-        <div>
-        <label>Display Name</label>
-                <input
-                    type='text' 
-                    required 
-                    onChange={handleChange} 
-                    name="displayName" 
-                    value={displayName}/>
-                    </div>
+        
+        <div className="group">
+            <input className="form-input" {...otherProps}/>
+                    {label && ( 
+                    <label className={`${otherProps.value.length ? 'shrink':''}
+                     form-input-label`}>
+                        {label}
+                        </label>
+                    )}
+                
+        </div>
     )
 }
+
+export default FormInput;
