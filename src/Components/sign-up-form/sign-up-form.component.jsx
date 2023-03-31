@@ -1,8 +1,13 @@
 import { useState } from "react";
 import './sign-up-form.styles.scss';
-import Button from '../button/button.component'
-import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import Button from '../button/button.component';
 import FormInput from "../form-input/form-input.component";
+
+import { 
+    createAuthUserWithEmailAndPassword,
+    createUserDocumentFromAuth
+ } from "../../utils/firebase/firebase.utils";
+ 
     const defaultFormFeilds={
         displayName:'',
         email:'',
@@ -10,13 +15,10 @@ import FormInput from "../form-input/form-input.component";
         confirmPassword:''
     }   //5 
 
-
-const SignUpForm = () => {
+ const SignUpForm = () => {
     const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
     const {displayName,email,password,confirmPassword}= formFeilds ;    //7 destructuring formfeilds needed
     
-    console.log(formFeilds)
-
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
     }                                               //20 reseting feilds function
@@ -28,20 +30,24 @@ const SignUpForm = () => {
             return;
         }                                           //13
         try{                                        //14
-             const {user} = await createAuthUserWithEmailAndPassword(email, password); //15
+             const {user} = await createAuthUserWithEmailAndPassword(
+                email,
+                 password
+                 ); //15
 
              await createUserDocumentFromAuth(user,{displayName}) //18 setting email,password and additional displayName too
              resetFormFeilds(); //21 reset formFeilds
+             
         }catch(error){
                 if(error.code=="auth/email-already-in-use"){
                     alert('cannot create user, email already in use'); //19 error managing - already exist
-                }                              
+                }else{                       
                 console.log("user creation encountered an error",error);
         }                                           //16 email and password authentication isnt accessing or storing other 
                                                     //data like displayName. so , saving display name too for sign in 
                                                     // function is the next step.
     }
-
+    }
     const handleChange = (event)=>{                                     //8 takes input event
                 const {name, value} = event.target;                     //10. name and value coming through the event
                 setFormFeilds({...formFeilds, [name]:value})            //11. update apptopriate feilds only
@@ -96,6 +102,5 @@ const SignUpForm = () => {
             </form>
         </div>
     )
-}
-
-export default SignUpForm
+    }
+    export default SignUpForm;

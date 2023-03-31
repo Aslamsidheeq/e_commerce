@@ -8,7 +8,8 @@ import {
     signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
         } from 'firebase/auth'
 
 import{
@@ -73,7 +74,7 @@ export const db = getFirestore();
         ...additionalInfo //overwrites if displayName is null to get displayName
       });
     } catch (error){
-      console.loh('there was an error',error.message);
+      console.log('there was an error',error.message);
     }
   }
   return userDocRef;
@@ -84,4 +85,10 @@ export const createAuthUserWithEmailAndPassword = async(email,password) =>{
   //if email and password isnt available , return function 
   return await createUserWithEmailAndPassword(auth,email,password);
 
+}
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
 }
