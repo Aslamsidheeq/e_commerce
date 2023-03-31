@@ -39,8 +39,17 @@ const SignInForm = () => {
             console.log(response)
              resetFormFeilds(); //21 reset formFeilds
         }catch(error){
-            console.log("ivde scene")
-        }                            
+            switch(error.code){
+                case 'auth/wrong-password':
+                    alert('incorrect password');
+                    break;
+                case 'auth/user-not-found':
+                    alert('no user associated with this email');
+                    break;
+                default:
+                    console.log(error);
+            }                           
+        }
     }
     const handleChange = (event)=>{                                     //8 takes input event
                 const {name, value} = event.target;                     //10. name and value coming through the event
@@ -76,19 +85,19 @@ const SignInForm = () => {
                     value={password}/>
 
 
-
-                <Button 
-                type="submit">
-                Sign-In
-                </Button> 
-                                                                    {/* 3. on clicking the button, onSubmit function works */}
-                <Button 
-                type='button' 
-                buttonType='google' 
-                onClick={signInWithGoogle}>
-                Google sign in
-                </Button>
-
+                <div className="buttons-container">
+                    <Button 
+                    type="submit">
+                    Sign-In
+                    </Button> 
+                                                                        {/* 3. on clicking the button, onSubmit function works */}
+                    <Button 
+                    type='button'  //5:50 @104 : reason
+                    buttonType='google' 
+                    onClick={signInWithGoogle}>
+                    Google sign in
+                    </Button>
+                </div>
             </form>
         </div>
     )
