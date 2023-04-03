@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import './sign-up-form.styles.scss';
 import Button from '../button/button.component';
 import FormInput from "../form-input/form-input.component";
-
+import { UserContext } from "../context/user.context";
 import { 
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth
@@ -19,6 +19,8 @@ import {
     const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
     const {displayName,email,password,confirmPassword}= formFeilds ;    //7 destructuring formfeilds needed
     
+    const {setCurrentUser} = useContext(UserContext);
+
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
     }                                               //20 reseting feilds function
@@ -35,11 +37,13 @@ import {
                  password
                  ); //15
 
+            setCurrentUser(user)
+
              await createUserDocumentFromAuth(user,{displayName}) //18 setting email,password and additional displayName too
              resetFormFeilds(); //21 reset formFeilds
              
         }catch(error){
-                if(error.code=="auth/email-already-in-use"){
+                if(error.code==="auth/email-already-in-use"){
                     alert('cannot create user, email already in use'); //19 error managing - already exist
                 }else{                       
                 console.log("user creation encountered an error",error);

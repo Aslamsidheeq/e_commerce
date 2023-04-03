@@ -1,13 +1,14 @@
-import { useState } from "react";
-import './sign-in-form.styles.scss';
-import Button from '../button/button.component'
+import { useState, useContext } from "react";
+import { UserContext } from "../../Components/context/user.context";
 import { 
     signInAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth,
     signInWithGooglePopup
- } from "../../utils/firebase/firebase.utils";
-
+        } from "../../utils/firebase/firebase.utils";
+import Button from '../button/button.component';
 import FormInput from "../form-input/form-input.component";
+import './sign-in-form.styles.scss';
+
 
     const defaultFormFeilds={
         email:'',
@@ -19,25 +20,28 @@ const SignInForm = () => {
     const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
     const {email,password}= formFeilds ;    //7 destructuring formfeilds needed
     
+    const { setCurrentUser} = useContext(UserContext)
 
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
-    }                                               //20 reseting feilds function
+        }                                               //20 reseting feilds function
     
     const signInWithGoogle = async () => {
         const { user } = await signInWithGooglePopup();
         await createUserDocumentFromAuth(user);
-      };
+        };
 
     const handleSubmit = async(event)=>{            //12
-        event.preventDefault();
-                                                 //13
+        event.preventDefault();                     //13
         try{
-            const response = await signInAuthUserWithEmailAndPassword(
+            const {user} = await signInAuthUserWithEmailAndPassword(
                 email,password
             )
-            console.log(response)
-             resetFormFeilds(); //21 reset formFeilds
+            setCurrentUser(user);
+
+            resetFormFeilds(); //21 reset formFeilds
+
+
         }catch(error){
             switch(error.code){
                 case 'auth/wrong-password':
@@ -52,7 +56,7 @@ const SignInForm = () => {
         }
     }
     const handleChange = (event)=>{                                     //8 takes input event
-                const {name, value} = event.target;                     //10. name and value coming through the event
+                const {name, value} = event.target;                     //10. name and value coming through the event - destructure
                 setFormFeilds({...formFeilds, [name]:value})            //11. update apptopriate feilds only
         }                                                               //5
     return(
