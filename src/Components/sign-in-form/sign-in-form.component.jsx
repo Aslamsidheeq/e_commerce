@@ -1,8 +1,6 @@
-import { useState, useContext } from "react";
-import { UserContext } from "../../Components/context/user.context";
+import { useState} from "react";
 import { 
     signInAuthUserWithEmailAndPassword,
-    createUserDocumentFromAuth,
     signInWithGooglePopup
         } from "../../utils/firebase/firebase.utils";
 import Button from '../button/button.component';
@@ -20,15 +18,13 @@ const SignInForm = () => {
     const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
     const {email,password}= formFeilds ;    //7 destructuring formfeilds needed
     
-    const { setCurrentUser} = useContext(UserContext)
-
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
         }                                               //20 reseting feilds function
     
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
+
         };
 
     const handleSubmit = async(event)=>{            //12
@@ -37,8 +33,7 @@ const SignInForm = () => {
             const {user} = await signInAuthUserWithEmailAndPassword(
                 email,password
             )
-            setCurrentUser(user);
-
+                console.log("submit",user)
             resetFormFeilds(); //21 reset formFeilds
 
 

@@ -1,8 +1,7 @@
-import { useState,useContext } from "react";
+import { useState} from "react";
 import './sign-up-form.styles.scss';
 import Button from '../button/button.component';
 import FormInput from "../form-input/form-input.component";
-import { UserContext } from "../context/user.context";
 import { 
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth
@@ -19,7 +18,6 @@ import {
     const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
     const {displayName,email,password,confirmPassword}= formFeilds ;    //7 destructuring formfeilds needed
     
-    const {setCurrentUser} = useContext(UserContext);
 
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
@@ -37,7 +35,6 @@ import {
                  password
                  ); //15
 
-            setCurrentUser(user)
 
              await createUserDocumentFromAuth(user,{displayName}) //18 setting email,password and additional displayName too
              resetFormFeilds(); //21 reset formFeilds
