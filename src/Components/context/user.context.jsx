@@ -6,6 +6,8 @@ export const UserContext = createContext({
     setCurrentUser:() => null,
 });
 
+    //App is the children
+    //provides states to its children ,ie wraped component in provider.
 export const UserProvider=({children}) =>{
     const [currentUser,setCurrentUser] = useState(null);
     const value = {currentUser,setCurrentUser}
@@ -13,7 +15,6 @@ export const UserProvider=({children}) =>{
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user)=>{
             if(user){
-                console.log("effect",user)
                 createUserDocumentFromAuth(user);
             }
             setCurrentUser(user)
