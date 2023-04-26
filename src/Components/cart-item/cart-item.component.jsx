@@ -1,7 +1,7 @@
-import './cart-item.syles.scss'
+import './cart-item.styles.scss'
 
 const CartItem=({CartItem})=>{
-    const {name,quantity} = CartItem;
+    const {name,quantity} = CartItem;       //destructure
     return(
         <div>
             <h2>{name}</h2>
