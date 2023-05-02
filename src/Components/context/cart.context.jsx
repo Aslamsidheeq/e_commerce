@@ -1,11 +1,9 @@
 import {createContext,useState,useEffect} from 'react';
 
 const addCartItem =(cartItems,productToAdd) => {    //helper function
-    
     const existingCartItem = cartItems.find((cartItems)=>
      cartItems.id === productToAdd.id
      );
-
     if(existingCartItem){
         return cartItems.map((cartItem)=>
         (cartItem.id === productToAdd.id)
@@ -14,10 +12,27 @@ const addCartItem =(cartItems,productToAdd) => {    //helper function
          :cartItem
         );
     }
-
     //return new array with modified or new items
     return [...cartItems,{...productToAdd, quantity: 1}];
 }
+
+
+    const removeCartItem = (cartItems,cartItemToRemove)=>{
+        const existingCartItem = cartItems.find((cartItem)=>
+        cartItem.id === cartItemToRemove.id
+        );
+        if(existingCartItem.quantity===1){
+            return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+        }
+        return cartItems.map((cartItem)=>
+        (cartItem.id === cartItemToRemove.id)
+         ? 
+         {...cartItem,quantity : cartItem.quantity-1}
+         :cartItem
+        );
+
+
+    }
 
 export const CartContext = createContext({
     //actual value you want to access
@@ -25,7 +40,8 @@ export const CartContext = createContext({
     setIsCartOpen:()=>{},
     cartItems:[],
     addItemToCart:()=>{},    //method
-    cartCount: 0
+    removeItemToCart:()=>{},
+    cartCount: 0,
     
 });
 
@@ -46,7 +62,10 @@ export const CartProvider = ({children}) =>{
     const addItemToCart =(productToAdd)=>{
         setCartItems(addCartItem(cartItems,productToAdd));
     }
-    const value = {isCartOpen,setIsCartOpen, addItemToCart, cartItems,cartCount}
+    const removeItemToCart =(cartItemToRemove)=>{
+        setCartItems(removeCartItem(cartItems,cartItemToRemove));
+    }
+    const value = {isCartOpen,setIsCartOpen, addItemToCart, cartItems,cartCount,removeItemToCart}
     return(
         <CartContext.Provider value={value}>{children}</CartContext.Provider>
     )

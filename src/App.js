@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./shop/shop.component";
+import Checkout from "./routes/checkout/checkout.component";
 
 
 const App=()=>{
@@ -12,7 +13,7 @@ const App=()=>{
           <Route  index element={<Home/>}/>
           <Route path='Shop' element={<Shop/>}/>
           <Route path='auth' element={<Authentication/>}/>
-
+          <Route path='checkout' element={<Checkout/>}/>
       </Route>
       {/*if the path string matches the URL, element passed. */}
      
