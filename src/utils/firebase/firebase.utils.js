@@ -18,7 +18,9 @@ import{
   getFirestore,
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  collection,
+  writeBatch //check whether transaction is succesful
 } from 'firebase/firestore'
 
 
@@ -51,6 +53,21 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth,googleProv
 
 
 export const db = getFirestore();
+
+
+//adding collection to firestore 
+export const addCollectionAndDocuments = async (collectionKey,objectsToAdd) =>{ //category is the collection key here
+  const collectionRef = collection(db,collectionKey);  //get collection from the (within) db , collection specified as collectionKey
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object)=>{ //5 obj from shop data here
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef,object); //set dcoref location with obj value
+  });
+
+  await batch.commit();
+  console.log("done");
+};
 
  export const createUserDocumentFromAuth = async (userAuth, additionalInfo={}) =>{
   //cheching if there is existing data
