@@ -20,7 +20,9 @@ import{
   getDoc,
   setDoc,
   collection,
-  writeBatch //check whether transaction is succesful
+  writeBatch, //check whether transaction is succesful
+  query,
+  getDocs
 } from 'firebase/firestore'
 
 
@@ -68,6 +70,32 @@ export const addCollectionAndDocuments = async (collectionKey,objectsToAdd) =>{ 
   await batch.commit();
   console.log("done");
 };
+
+export const getCategoriesAndDocuments = async () =>{
+  const collectionRef = collection(db,'categories');
+  const q = query(collectionRef) //returns object
+
+  const querySnapshot = await getDocs(q); //executes query and returns a promise - snapshot of query results
+  
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot)=> {
+    const {title,items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items ;
+    return acc;
+  },{})
+  return categoryMap;
+
+}
+//a fourth variable called categoryMap and assigns it the value of calling the reduce method on the docs property of querySnapshot. 
+//The docs property is an array of document snapshots that contain the data and metadata of each document in the query results. 
+//The reduce method takes two arguments: a callback function and an initial value. The callback function takes four parameters: an accumulator, a current value, a current index, and the original array. 
+//The reduce method applies the callback function to each element of the array, starting from the initial value, and returns the final value of the accumulator. In this case, the callback function does the following:
+//It destructures the current value (which is a document snapshot) into two variables: title and items, which correspond to the fields of each document in the collection.
+//It assigns a new property to the accumulator object, using the lowercased title as the key and items as the value.
+//It returns the accumulator object for the next iteration.
+//The initial value of the accumulator is an empty object ({}), so the final result of calling reduce is an object that maps each title to its items.
+//The function returns the categoryMap object as its output.
+
+
 
  export const createUserDocumentFromAuth = async (userAuth, additionalInfo={}) =>{
   //cheching if there is existing data
