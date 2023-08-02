@@ -3,6 +3,7 @@ import { CategoriesContext } from "../../Components/context/categories.context";
 import CategoryPreview from "../../Components/category-preview/category-preview.jsx";
 
 const CategoriesPreview = () =>{
+    //lives at shop component
 
     const {categoriesMap} = useContext(CategoriesContext);
 
@@ -13,8 +14,6 @@ const CategoriesPreview = () =>{
                 console.log("products:",products)
                 return <CategoryPreview key={title} title={title} products={products} />
             }
-                
-                
             )}
         </>
 

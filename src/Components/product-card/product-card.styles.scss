@@ -11,6 +11,7 @@
       height: 95%;
       object-fit: cover;
       margin-bottom: 5px;
+      border-radius: 10px;
     }
   
     button {
@@ -33,11 +34,12 @@
     }
   
     .footer {
-      width: 100%;
+      width: 90%;
       height: 5%;
       display: flex;
       justify-content: space-between;
       font-size: 18px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   
       .name {
         width: 90%;
@@ -45,7 +47,7 @@
       }
   
       .price {
-        width: 10%;
+        width: 15%;
       }
     }
   }

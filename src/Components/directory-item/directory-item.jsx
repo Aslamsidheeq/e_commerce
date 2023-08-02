@@ -1,6 +1,8 @@
 import './directory-item.styles.scss';
 
-const CategoryItem =  ({category})=>{
+const DirectoryItem =  ({category})=>{
+    //lives at directory component
+
     const { imageUrl, title } = category;
     return(
         <div className='directory-body-container'>
@@ -13,4 +15,4 @@ const CategoryItem =  ({category})=>{
 
     )
 }
-export default CategoryItem;
+export default DirectoryItem;
