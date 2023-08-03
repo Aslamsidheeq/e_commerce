@@ -1,16 +1,16 @@
-import './category-preview.styles.scss';
-import ProductCard from '../product-card/product-card.component.jsx';
-import { Link } from 'react-router-dom';
+import './category-preview.styles.jsx';
+import ProductCard from '../product-card/product-card.component.jsx'; 
+import { CatPreviewContainer, Preview, Title } from './category-preview.styles.jsx';
 
 const CategoryPreview= ({ title, products }) => {
     //lives at categories-preview component
     
     return(
-        <div className='category-preview-container'>
+        <CatPreviewContainer>
             <h2>
-                <Link className='title' to={title}>{title.toUpperCase()}</Link>
+                <Title to={title}>{title.toUpperCase()}</Title>
             </h2>
-        <div className='preview'>
+        <Preview>
             {
                 products.filter((_,index) => index < 4)
                         .map((product)=> 
@@ -18,8 +18,8 @@ const CategoryPreview= ({ title, products }) => {
                         )
             }
 
-        </div>
-        </div>
+        </Preview>
+        </CatPreviewContainer>
     )
 }
 
