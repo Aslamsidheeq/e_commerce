@@ -37,6 +37,7 @@ export const InvertedBtn = styled(BaseButton)`
 background-color: white;
 color: black;
 border: 1px solid black;
+line-height:normal;
 
 &:hover {
   background-color: black;

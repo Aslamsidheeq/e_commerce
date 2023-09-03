@@ -16,7 +16,6 @@ const addCartItem =(cartItems,productToAdd) => {    //helper function
     return [...cartItems,{...productToAdd, quantity: 1}];
 }
 
-
     const removeCartItem = (cartItems,cartItemToRemove)=>{
         const existingCartItem = cartItems.find((cartItem)=>
         cartItem.id === cartItemToRemove.id
@@ -30,8 +29,6 @@ const addCartItem =(cartItems,productToAdd) => {    //helper function
          {...cartItem,quantity : cartItem.quantity-1}
          :cartItem
         );
-
-
     }
 
     const clearCartItem = (cartItems, cartItemToClear) =>{
@@ -51,6 +48,15 @@ export const CartContext = createContext({
     
 });
 
+const cartReducer = (state,action) =>{
+    const {type, payload} = action;
+
+    switch(type){
+        default:
+            throw new Error('unhandled type of ${type} in cartReducer')
+    }
+}
+
 export const CartProvider = ({children}) =>{
 
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -67,7 +73,7 @@ export const CartProvider = ({children}) =>{
 
     useEffect(() => {
         const newCartTotal = cartItems.reduce((total,cartItem)=>          //accumulator,current element
-        total + cartItem.quantity * cartItem.price,0)                                      // 0 is the initial value for accumulator
+        total + cartItem.quantity * cartItem.price,0)                     // 0 is the initial value for accumulator
         setCartTotal(newCartTotal);
         
       }, [cartItems])

@@ -3,7 +3,13 @@
 // }
 .authentication-container{
     display: flex;
+    width: 100%;
+    margin: 10% auto;
     justify-content: space-between;
-    width: 900px;
-    margin: 30px auto;
+    @media (max-width: 768px) {
+          max-width: 100%;
+          padding: 0 5%;
+          display: flex;
+          flex-direction: column;
+        }
 }
