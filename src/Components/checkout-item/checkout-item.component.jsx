@@ -5,13 +5,14 @@ import { CartContext } from '../context/cart.context';
 
 const CheckoutItem = ({cartItem}) =>{
     const {name , imageUrl , quantity , price } = cartItem ;
-    const {clearItemFromCart,addItemToCart,removeItemToCart} = useContext(CartContext);
+    const {clearItemFromCart,addItemToCart,removeItemToCart,setIsCartOpen,isCartOpen} = useContext(CartContext);
 
     const clearItemHandler = ()=> clearItemFromCart(cartItem);
     const removeItemHandler =()=> removeItemToCart(cartItem);
     const addItemHandler = ()=> addItemToCart(cartItem);
+    const toggleIsCartOpen = ()=> setIsCartOpen(!isCartOpen)
     return(
-        <div className='checkout-item-container'>
+        <div className='checkout-item-container' onClick={toggleIsCartOpen}>
             <div className='image-container'>
                 <img src={imageUrl} alt={`${name}`}/>
             </div>
