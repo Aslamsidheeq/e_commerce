@@ -6,11 +6,17 @@ import { CartContext } from '../context/cart.context';
 const CheckoutItem = ({cartItem}) =>{
     const {name , imageUrl , quantity , price } = cartItem ;
     const {clearItemFromCart,addItemToCart,removeItemToCart,setIsCartOpen,isCartOpen} = useContext(CartContext);
+    const cartClosing = (isCartOpen) =>{
+        if(isCartOpen==true){
+            return setIsCartOpen(!isCartOpen)
+        }
+    } 
 
     const clearItemHandler = ()=> clearItemFromCart(cartItem);
     const removeItemHandler =()=> removeItemToCart(cartItem);
     const addItemHandler = ()=> addItemToCart(cartItem);
-    const toggleIsCartOpen = ()=> setIsCartOpen(!isCartOpen)
+    const toggleIsCartOpen = ()=> cartClosing(isCartOpen);
+
     return(
         <div className='checkout-item-container' onClick={toggleIsCartOpen}>
             <div className='image-container'>
