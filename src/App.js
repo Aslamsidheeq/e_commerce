@@ -4,10 +4,12 @@ import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
-
+import { GlobalStyle } from "./global.styles";
 
 const App=()=>{
   return(
+    <>
+    <GlobalStyle/>
     <Routes>
       <Route path="/" element={<Navigation/>}>
           <Route  index element={<Home/>}/>
@@ -18,6 +20,6 @@ const App=()=>{
       {/*if the path string matches the URL, element passed. */}
      
     </Routes>
-    
+    </>
 )};
 export default App;
