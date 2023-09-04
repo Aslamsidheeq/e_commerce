@@ -7,7 +7,7 @@ const CheckoutItem = ({cartItem}) =>{
     const {name , imageUrl , quantity , price } = cartItem ;
     const {clearItemFromCart,addItemToCart,removeItemToCart,setIsCartOpen,isCartOpen} = useContext(CartContext);
     const cartClosing = (isCartOpen) =>{
-        if(isCartOpen==true){
+        if(isCartOpen===true){
             return setIsCartOpen(!isCartOpen)
         }
     } 
