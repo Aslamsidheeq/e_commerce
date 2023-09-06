@@ -12,7 +12,8 @@ body {
 
     @media screen and (max-width:800px){
       padding:0px;
-      width:100vw;
+      width:100%;
+    
     }
   }
   

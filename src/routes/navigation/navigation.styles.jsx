@@ -12,9 +12,7 @@ export const NavigationContainer = styled.div`
       width:100%;
       padding:10px 20px;
       margin-bottom:20px;
-      
-    }
-`
+      }`
 export const LogoContainer = styled(Link)`
       height: 100%;
       width: 100px;
@@ -51,7 +49,7 @@ export const NavLinks = styled.div`
 export const NavLink = styled(Link)`
         padding: 10px 15px;
         cursor: pointer;
-        background-color:grey;
+        background-color:white;
         border-radius:50px;
         margin:5px;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);

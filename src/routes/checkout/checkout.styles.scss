@@ -5,6 +5,11 @@
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+  @media screen and (max-width:800px){
+    width:100%;
+    margin: 0px;
+    overflow-x: hidden;
+  }
 
   .checkout-header {
     width: 100%;
@@ -16,9 +21,11 @@
     .header-block {
       text-transform: capitalize;
       width: 23%;
-
+      @media screen and (max-width:800px){
+        width: fit-content;
+      }
       &:last-child {
-        width: 8%;
+        width: 19%;
       }
     }
   }
@@ -27,8 +34,10 @@
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
-  }
-  @media screen and (max-width:800px){
-    width:100%;
+    @media screen and (max-width:800px){
+      font-size: 20px;
+      margin-top: 15px;
+      margin-left: 5%;
+    }
   }
 }

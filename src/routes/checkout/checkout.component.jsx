@@ -31,7 +31,7 @@ return(
                  cartItem={cartItem}
                  />)
             }
-            <span className="total">Total:{cartTotal}</span>
+            <span className="total">Total = {cartTotal}</span>
             </div>
             )}
 export default Checkout;
