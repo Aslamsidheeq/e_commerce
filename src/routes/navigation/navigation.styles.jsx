@@ -9,8 +9,10 @@ export const NavigationContainer = styled.div`
     margin-bottom: 25px;
     @media screen and (max-width:800px){
       height:60px;
+      width:100%;
       padding:10px 20px;
       margin-bottom:20px;
+      
     }
 `
 export const LogoContainer = styled(Link)`
