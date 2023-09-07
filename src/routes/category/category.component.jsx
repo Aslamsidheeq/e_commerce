@@ -18,7 +18,7 @@ const Category = () =>{
         },[category,categoriesMap]);
 
         if (Object.keys(categoriesMap).length === 0) {
-            return <div>Hats 👒...</div>;
+            return <div>SUMMER SALE IS LIVE...</div>;
           }
           
 return(
