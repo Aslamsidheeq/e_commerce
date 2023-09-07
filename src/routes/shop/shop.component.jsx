@@ -11,7 +11,6 @@ const Shop = () =>{
         <Route path=":category" element={<Category/>}/>
     </Routes>
 
-
         // <div className="products-container">
         //     {products.map((product)=>(
         //         <ProductCard key={product.id} product={product}/>
