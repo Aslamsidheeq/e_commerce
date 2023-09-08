@@ -10,34 +10,29 @@ import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component
 
 const Navigation = ()=> {
 
-    const {currentUser} = useContext(UserContext);
-    const {isCartOpen} = useContext(CartContext);
+  const {currentUser} = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext);
 
-    return(
-      <Fragment> 
-        <NavigationContainer>
-            <LogoContainer to='/'>
-                <CrwnLogo className="logo"/>
-            </LogoContainer>
+  return(
+    <Fragment> 
+      <NavigationContainer>
+          <LogoContainer to='/'>
+              <CrwnLogo className="logo"/>
+          </LogoContainer>
           <NavLinks>
-                <NavLink to='/Shop'>
-                  SHOP
-                  </NavLink>
-                {
-                  currentUser ? (
-                    <NavLink as='span' onClick={signOutUser}>
-                      Sign Out</NavLink> )
-                    : (<NavLink to='/auth'>SIGN-IN</NavLink>)
-                  
-                }
-                <CartIcon/>
+            <NavLink to='/Shop'>SHOP</NavLink>
+              {
+                currentUser ? (
+                  <NavLink as='span' onClick={signOutUser}>Sign Out</NavLink> )
+                  :(<NavLink to='/auth'>SIGN-IN</NavLink>)
+              }
+              <CartIcon/>
+            </NavLinks>
+            { isCartOpen && <CartDropdown/> }
+      </NavigationContainer>
+      <Outlet/> 
+    </Fragment>
+  )
+}
 
-          </NavLinks>
-          { isCartOpen && <CartDropdown/> }
-        </NavigationContainer>
-        <Outlet/> 
-      </Fragment>
-    )
-  }
-
-  export default Navigation
+export default Navigation

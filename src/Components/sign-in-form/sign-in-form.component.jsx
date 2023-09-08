@@ -6,30 +6,30 @@ import Button,
 import FormInput from "../form-input/form-input.component";
 import './sign-in-form.styles.scss';
 
-    const defaultFormFeilds={
-        email:'',
-        password:'',
-    }   //5 
+const defaultFormFeilds={
+    email:'',
+    password:'',
+}   
 
 const SignInForm = () => {
-    const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    //6 
-    const {email,password}= formFeilds ;    //7 destructuring formfeilds needed
+    const [formFeilds,setFormFeilds] = useState(defaultFormFeilds) ;    
+    const {email,password}= formFeilds ;    // destructuring formfeilds needed
     
     const resetFormFeilds =()=>{
         setFormFeilds(defaultFormFeilds)
-        }                                               //20 reseting feilds function
+        }                                               // reseting feilds function
     
     const signInWithGoogle = async () => {
         await signInWithGooglePopup();
         };
 
-    const handleSubmit = async(event)=>{            //12
-        event.preventDefault();                     //13
+    const handleSubmit = async(event)=>{            
+        event.preventDefault();                     
         try{
             const {user} = await
             signInAuthUserWithEmailAndPassword(email,password)
             console.log("submit",user)
-            resetFormFeilds(); //21 reset formFeilds
+            resetFormFeilds(); // reset formFeilds
         }catch(error){
             switch(error.code){
                 case 'auth/wrong-password':
@@ -43,13 +43,13 @@ const SignInForm = () => {
             }                           
         }
     }
-    const handleChange = (event)=>{                                     //8 takes input event
-            const {name, value} = event.target;                     //10. name and value coming through the event - destructure
-            setFormFeilds({...formFeilds, [name]:value})}            //11. update apptopriate feilds only//5
+    const handleChange = (event)=>{                                     // takes input event
+            const {name, value} = event.target;                     // name and value coming through the event - destructure
+            setFormFeilds({...formFeilds, [name]:value})}            // update apptopriate feilds only//5
     return(
-        <div className="sign-up-container">                                                 {/* 1. creating function */}
+        <div className="sign-up-container">                                                
             <h2>Already have an account ?</h2>
-            <span>Sign in with your email id and password</span>                        {/* 2. form component */}
+            <span>Sign in with your email id and password</span>       
             
             <form onSubmit={handleSubmit}>
                 <FormInput
@@ -73,7 +73,7 @@ const SignInForm = () => {
                     type="submit">
                     Sign-In
                     </Button> 
-                                                                        {/* 3. on clicking the button, onSubmit function works */}
+                                                            
                     <Button 
                     type='button'  //5:50 @104 : reason
                     buttonType={BUTTON_TYPE_CLASSES.google} 

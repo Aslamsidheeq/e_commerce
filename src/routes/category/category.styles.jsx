@@ -9,6 +9,11 @@ export const CategoryContainer = styled.h2`
     grid-template-columns: repeat(2, 1fr);
     margin-left:4vw;
     }
+    @media screen and (max-width:400px){
+      grid-template-columns:1fr;
+      grid-row-gap:25px;
+      margin-left:10vw;
+    }
     `
   
   export const CategoryTitle = styled.div`

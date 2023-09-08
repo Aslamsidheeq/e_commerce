@@ -6,13 +6,11 @@ import { CategoriesContext } from '../../Components/context/categories.context';
 import { CategoryContainer,CategoryTitle } from './category.styles';
 
 const Category = () =>{
-    //lives at Shop component
 
     const { category } = useParams();
     const {categoriesMap} = useContext(CategoriesContext) || {};
-    const [products,setProducts] = useState([categoriesMap[category]]);
-    console.log("products state",products)   
-    // console.log("prm",[categoriesMap[category]])
+    const [products,setProducts] = useState([categoriesMap[category]]);  
+
     useEffect(()=>{
         setProducts(categoriesMap[category]);
         },[category,categoriesMap]);
