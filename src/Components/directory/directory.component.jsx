@@ -1,5 +1,6 @@
-import { DirectoryContainer } from '../directory/directory.styles';
+import { DirectoryContainer, Limited } from '../directory/directory.styles';
 import DirectoryItem from'../directory-item/directory-item'
+import Timer from './timer';
 
 const categories = [
     {
@@ -35,11 +36,18 @@ const categories = [
   ]
   const Directory = () => {
     return (
+      <>
+      <Limited>
+        <p>LIMITED TIME DEALS</p>
+        <p>⏰ Hurry,Before It's Gone</p>
+        <Timer/>
+      </Limited>
       <DirectoryContainer>
         {categories.map((category) => (
           <DirectoryItem key={category.id} category={category} />
         ))}
       </DirectoryContainer>
+      </>
     );
   };
 

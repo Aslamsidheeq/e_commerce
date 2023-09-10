@@ -10,7 +10,6 @@ const {categoriesMap} = useContext(CategoriesContext);
         <>
             {Object.keys(categoriesMap).map((title)=>{
                 const products = categoriesMap[title];
-                console.log("products:",products)
                 return <CategoryPreview key={title} title={title} products={products} />
             })}
         </>

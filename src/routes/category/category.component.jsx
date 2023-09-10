@@ -7,7 +7,7 @@ import { CategoryContainer,CategoryTitle } from './category.styles';
 
 const Category = () =>{
 
-    const { category } = useParams();
+    const { category } = useParams(); //access paramteres of current URL
     const {categoriesMap} = useContext(CategoriesContext) || {};
     const [products,setProducts] = useState([categoriesMap[category]]);  
 

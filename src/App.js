@@ -5,6 +5,7 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import { GlobalStyle } from "./global.styles";
+import Footer from "./Components/footer/footer.component"
 
 const App=()=>{
   return(
@@ -18,8 +19,8 @@ const App=()=>{
           <Route path='checkout' element={<Checkout/>}/>
       </Route>
       {/*if the path string matches the URL, element passed. */}
-     
     </Routes>
+    <Footer/>
     </>
 )};
 export default App;

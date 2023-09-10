@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.footer-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(239, 239, 239);
+    margin-top: 10vw;
+    padding: 0.5vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+
+    ul{
+        list-style-type:none;
+    }
+    .news{
+        margin-top: 2vw;
+        margin-left: 1vw;
+    }
+}
