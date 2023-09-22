@@ -28,7 +28,7 @@ import{
 
 
 //copied from firebase website
-// Your web app's Firebase configuration
+//Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBHExnPbNYQ72pk_c5LbDgzMTrtl1k0bKM",
   authDomain: "crwn-db-22d97.firebaseapp.com",
@@ -52,7 +52,6 @@ googleProvider.setCustomParameters(
 export const auth= getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth,googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth,googleProvider)
-
 
 export const db = getFirestore();
 
@@ -93,9 +92,7 @@ export const getCategoriesAndDocuments = async () =>{
 //It assigns a new property to the accumulator object, using the lowercased title as the key and items as the value.
 //It returns the accumulator object for the next iteration.
 //The initial value of the accumulator is an empty object ({}), so the final result of calling reduce is an object that maps each title to its items.
-//The function returns the categoryMap object as its output.
-
-
+//returns the categoryMap object output.
 
  export const createUserDocumentFromAuth = async (userAuth, additionalInfo={}) =>{
   //cheching if there is existing data
@@ -104,7 +101,6 @@ export const getCategoriesAndDocuments = async () =>{
 
 
   const userSnapshot = await getDoc(userDocRef);
-  // console.log(userSnapshot);
   // console.log((userSnapshot).exists());
   //exists method to check if it exist,boolean
 

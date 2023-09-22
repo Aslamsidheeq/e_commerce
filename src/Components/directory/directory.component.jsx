@@ -39,7 +39,7 @@ const categories = [
       <>
       <Limited>
         <p>LIMITED TIME DEALS</p>
-        <p>⏰ Hurry,Before It's Gone</p>
+        <p className='hurry'>⏰ Hurry,Before It's Gone</p>
         <Timer/>
       </Limited>
       <DirectoryContainer>

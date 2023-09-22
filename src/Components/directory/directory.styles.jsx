@@ -6,6 +6,11 @@ margin:.5vw;
 display:flex;
 justify-content:center;
 align-items:center;
+.hurry{
+  @media screen and (max-width:800px){
+    display:none;
+  }
+}
 .timeCount{
   text-align: center;
   animation: blink-animation 1s steps(3, start) infinite;

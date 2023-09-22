@@ -4,10 +4,11 @@ import './product-card.styles.scss';
 import Button from '../button/button.component';
 import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
+//lives in caegory route 
 const ProductCard =  ({product}) => {
     const {addItemToCart} = useContext(CartContext)
     const {name,price,imageUrl} = product ;
-    const addProductToCart= ()=> addItemToCart(product);
+    const addProductToCart= ()=> addItemToCart(product); //product from category route component
     return(
     <div className='product-card-container'>
         <img src={imageUrl} alt={`${name}`}/>
