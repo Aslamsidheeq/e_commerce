@@ -19,7 +19,7 @@ export const UserProvider=({children}) =>{
             }
             setCurrentUser(user)
         })
-        return unsubscribe
+        return unsubscribe //clean up when unmounts
     },[]);
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>

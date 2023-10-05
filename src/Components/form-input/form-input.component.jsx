@@ -1,6 +1,6 @@
 import './form-input.styles.scss'
 
-
+//lives in sign-in and sign-up component
 const FormInput = ({label,...otherProps})=>{
     return(
         <div className="group">

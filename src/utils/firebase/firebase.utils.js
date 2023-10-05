@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
 import {
     getAuth,
     signInWithRedirect,
@@ -12,7 +10,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
-        } from 'firebase/auth'
+    } from 'firebase/auth'
 
 import{
   getFirestore,
@@ -23,12 +21,12 @@ import{
   writeBatch, //check whether transaction is succesful
   query,
   getDocs
-} from 'firebase/firestore'
+  } from 'firebase/firestore'
 
 
 
 //copied from firebase website
-//Your web app's Firebase configuration
+//Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBHExnPbNYQ72pk_c5LbDgzMTrtl1k0bKM",
   authDomain: "crwn-db-22d97.firebaseapp.com",
@@ -45,9 +43,9 @@ const firebaseApp = initializeApp(firebaseConfig);
 //initialising provider for google auth
 const googleProvider = new GoogleAuthProvider();
 
-googleProvider.setCustomParameters(
-  {prompt:"select_account"}
-)
+googleProvider.setCustomParameters({
+  prompt:"select_account"
+})
 
 export const auth= getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth,googleProvider)
@@ -84,9 +82,7 @@ export const getCategoriesAndDocuments = async () =>{
   return categoryMap;
 
 }
-//a fourth variable called categoryMap and assigns it the value of calling the reduce method on the docs property of querySnapshot. 
 //The docs property is an array of document snapshots that contain the data and metadata of each document in the query results. 
-//The reduce method takes two arguments: a callback function and an initial value. The callback function takes four parameters: an accumulator, a current value, a current index, and the original array. 
 //The reduce method applies the callback function to each element of the array, starting from the initial value, and returns the final value of the accumulator. In this case, the callback function does the following:
 //It destructures the current value (which is a document snapshot) into two variables: title and items, which correspond to the fields of each document in the collection.
 //It assigns a new property to the accumulator object, using the lowercased title as the key and items as the value.
@@ -95,8 +91,7 @@ export const getCategoriesAndDocuments = async () =>{
 //returns the categoryMap object output.
 
  export const createUserDocumentFromAuth = async (userAuth, additionalInfo={}) =>{
-  //cheching if there is existing data
-  //17 adding paramter to recieve aadditional info
+  //17 adding paramter to recieve additional info
   const userDocRef = doc(db,'users',userAuth.uid);
 
 
@@ -123,15 +118,12 @@ export const getCategoriesAndDocuments = async () =>{
 };
 
 export const createAuthUserWithEmailAndPassword = async(email,password) =>{
-  if(!email || !password) return;
-  //if email and password isnt available , return function 
+  if(!email || !password) return;     //if email and password isnt available , return -function 
   return await createUserWithEmailAndPassword(auth,email,password);
-
 }
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-
   return await signInWithEmailAndPassword(auth, email, password);
 }
 

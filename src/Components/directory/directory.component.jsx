@@ -5,33 +5,33 @@ import Timer from './timer';
 const categories = [
     {
       "id": 1,
-      "title": "hats",
-      "imageUrl": "https://img.freepik.com/premium-photo/white-bucket-hat-mockup-canvas-booney-panama-summer-head-wear-mock-up-oversized-sunhat_87790-2269.jpg?w=900",
-      route:'shop/hats',
+      "title": "soft toys",
+      "imageUrl": "https://images.unsplash.com/photo-1515611309071-6cd7e12cace9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGUlMjB0ZWRkeXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+      route:'shop/soft-toys',
     },
     {
       "id": 2,
-      "title": "jackets",
-      "imageUrl": "https://img.freepik.com/free-psd/white-jacket-floating-white_176382-1845.jpg?w=740&t=st=1693989927~exp=1693990527~hmac=4e2e1dfd1ee3c1845d937f5f20b622b1b1d0ead5af23fc473c883783641d9fc4",
-      route:'shop/jackets',
+      "title": "learning toys",
+      "imageUrl": "https://images.unsplash.com/photo-1611517976630-163467322778?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHV6emxlfGVufDB8fDB8fHww&w=1000&q=80",
+      route:'shop/learning-toys',
     },
     {
       "id": 3,
-      "title": "sneakers",
-      "imageUrl": "https://img.freepik.com/free-photo/new-pair-white-sneakers-isolated-white_93675-135205.jpg?w=900&t=st=1693989980~exp=1693990580~hmac=e2c09d40b15bfae72616da6c44d89c102dc220b3b80f292fb618eb0f488ec283",
-      route:'shop/sneakers',
+      "title": "musical toys",
+      "imageUrl": "https://images.unsplash.com/photo-1581557991964-125469da3b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG95fGVufDB8fDB8fHww&w=1000&q=80",
+      route:'shop/musical-toys',
     },
     {
       "id": 4,
-      "title": "womens",
-      "imageUrl": "https://img.freepik.com/free-photo/portrait-elegant-modern-european-woman-with-bun-hairstyle-smiling-broadly_176420-17184.jpg?w=900&t=st=1693990533~exp=1693991133~hmac=ecf38a70fdde17cf7fedcd7914e9126c7a189c430cbdbcda4d38bb749baf7d5a",
-      route:'shop/womens',
+      "title": "girls",
+      "imageUrl": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxpdHRsZSUyMGdpcmwlMjBpbiUyMHdoaXRlfGVufDB8fDB8fHww&w=1000&q=80",
+      route:'shop/girls',
     },
     {
       "id": 5,
-      "title": "mens",
-      "imageUrl": "https://img.freepik.com/premium-photo/portrait-smiling-young-man_171337-38369.jpg?w=900",
-      route:'shop/mens',
+      "title": "boys",
+      "imageUrl": "https://img.freepik.com/free-photo/medium-shot-boy-with-color-splash_23-2150753104.jpg",
+      route:'shop/boys',
     }
   ]
   const Directory = () => {

@@ -1,5 +1,6 @@
 import './cart-item.styles.scss'
 
+//lives at cartDropdown component
 const CartItem=({CartItem})=>{
     const {name,quantity,imageUrl,price} = CartItem;       //destructure
     return(

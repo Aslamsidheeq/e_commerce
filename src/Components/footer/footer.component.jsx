@@ -6,10 +6,8 @@ const Footer =()=>{
 		<div className="footer-container">
 			<div className="about">
 				<h2>CROWN CLOTHING PVT LTD.</h2>
-				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Cumque porro blanditiis laboriosam quos totam quas deleniti 
-					cupiditate soluta aut, id ab doloremque consectetur inventore 
-					exercitationem accusantium fuga dolore aliquam quis.</p>
+				<p> Fully responsive Kids collections e-commerce website with kids clothing for boys and girls,toys in different category and all using React Js library. Firebase for authentication and firestore for storing data.
+					Implemented sign in , sign up and cart functionalities.</p>
 			</div>
 			<div className="customer-care">
 				<ul>

@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const Timer=()=> {
-  const [timeLeft, setTimeLeft] = useState(16400); // 24 hours in seconds
+  const [timeLeft, setTimeLeft] = useState(16400); // 4 hours in seconds
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(prevTimeLeft => prevTimeLeft - 1);
-    }, 1000);
+    }, 1000); //setInterval to decrement time left by 1 everysecond
 
     return () => clearInterval(interval);
   }, []);
 
-  const hours = Math.floor(timeLeft / 3600);
+  const hours = Math.floor(timeLeft / 3600); //round to nearest integer
   const minutes = Math.floor((timeLeft % 3600) / 60);
   const seconds = timeLeft % 60;
 
